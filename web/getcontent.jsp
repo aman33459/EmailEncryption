@@ -15,7 +15,7 @@
         <%int val=Integer.parseInt(request.getParameter("value"));%>
         <%@page import="com.aman.inbox.content" %>
         <%content aa = new content();
-        out.print(aa.recieveEmail("aman33459@gmail.com","aman@2206",val));
+        out.print(aa.recieveEmail("*******","******",val));
         
         %>
         <p>click <a href="enter.jsp">here</a>to go back </p>

@@ -37,8 +37,8 @@ public class sendmail extends HttpServlet {
         String subject = request.getParameter("subject");
         String body = request.getParameter("body");
         //String attach =request.getParameter("attach");
-        String username="aman33459@gmail.com";
-        String password="aman@2206";
+        String username="******";
+        String password="*****";
         try (PrintWriter out = response.getWriter()) {
             out.println("Aman");
             out.println(to);

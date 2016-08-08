@@ -17,7 +17,7 @@
     <%@page import="com.aman.inbox.getinbox" %>
     <% Message[] message;
         getinbox aa = new getinbox();
-        message=aa.receive("aman33459@gmail.com", "aman@2206");
+        message=aa.receive("******", "******");
         
             out.println("<html>");
               out.println("<body>");
