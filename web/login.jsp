@@ -8,13 +8,14 @@
 </head>
 
 <body>
-    
+     <%@page import=" org.aman.catchagen.SimpleCaptchaServlet " %>
+
 <% String val=request.getParameter("value");
     %>
 <center>
 <form action=<%="getcontent.jsp?value="+val%> method="post">
 <table cellspacing="15">
-
+    
 <tr>
 <td>Are you human?</td>
 <td><input type="text" name="code"></td>
@@ -22,7 +23,7 @@
 
 </table>
 <br>
-<img src=<%="captchgen/SimpleCaptchaServlet?value="+val %> >
+<img src=<%="SimpleCaptchaServlet?value="+val %> >
 
 <br><br>
 <input type="submit" value="submit">
