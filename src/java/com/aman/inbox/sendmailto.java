@@ -108,8 +108,8 @@ import javax.mail.internet.MimeMultipart;
     }
     public String sendmail(String to,String from, String body, String subject)
     {
-        String username = "aman33459@gmail.com";
-        String passsword = "nawal@0563";
+        String username = "*************";
+        String passsword = "********";
         try{
       Properties props = new Properties();
       props.put("mail.smtp.ssl.trust","smtp.gmail.com");

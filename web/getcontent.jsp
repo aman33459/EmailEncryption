@@ -16,7 +16,7 @@
         <%@page import="com.aman.inbox.content" %>
         <%String key= request.getParameter("code"); %>
         <%content aa = new content();
-        out.print(aa.recieveEmail("aman33459@gmail.com","nawal@0563",val,key));
+        out.print(aa.recieveEmail("********","*******",val,key));
         //out.print();
         %>
         <p>click <a href="enter.jsp">here</a>to go back </p>
