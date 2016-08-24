@@ -22,7 +22,7 @@
 
 </table>
 <br>
-<img src=<%="http://localhost:8999/captchgen/SimpleCaptchaServlet?value="+val %> >
+<img src=<%="captchgen/SimpleCaptchaServlet?value="+val %> >
 
 <br><br>
 <input type="submit" value="submit">

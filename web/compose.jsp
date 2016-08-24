@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Welcome to Aman mail</h1>
-    </body><form name="infor" action="sendmail" method="POST">
+    </body><form name="sending mail" action="sendmail" method="POST">
         <table border="0">
             <tbody>
                 <tr>

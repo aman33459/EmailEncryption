@@ -11,7 +11,11 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -32,10 +36,80 @@ import javax.mail.internet.MimeMultipart;
  * @author User
  */
     public class sendmailto {
+         String da;  
+    private String encrypt( String ptext ,String key ) throws UnsupportedEncodingException
+    {
+    int temp=0;
+//String ptext;
+
+    int s[]=new int[256];
+    int k[]=new int[256];
+    /*DataInputStream in=new DataInputStream(System.in);
+    System.out.print("Enter the plain text\n");
+    ptext=in.readLine();
+    System.out.print("\n\nENTER KEY TEXT\t\t");
+    key=in.readLine();*/
+    char ptextc[]=ptext.toCharArray();
+    char keyc[]=key.toCharArray();
+    int cipher[]=new int[ptext.length()];
+    int decrypt[]=new int[ptext.length()];
+
+    int ptexti[]=new int[ptext.length()];
+    int keyi[]=new int[key.length()];
+    for(int i=0;i<ptext.length();i++)
+    {
+        ptexti[i]=(int)ptextc[i];
+    }
+    for(int i=0;i<key.length();i++)
+    {
+        keyi[i]=(int)keyc[i];
+    }
+    for(int i=0;i<255;i++)
+    {
+        s[i]=i;
+        k[i]=keyi[i%key.length()];
+    }
+        int j=0;
+    for(int i=0;i<255;i++)
+    {
+        j=(j+s[i]+k[i])%256;
+        temp=s[i];
+        s[i]=s[j];
+        s[j]=temp;
+    }
+    int i=0;
+    j=0;
+    int z=0;
+    for(int l=0;l<ptext.length();l++)
+    {
+        i=(l+1)%256;
+        j=(j+s[i])%256;
+        temp=s[i];
+        s[i]=s[j];
+        s[j]=temp;
+        z=s[(s[i]+s[j])%256];
+        cipher[l]=z^ptexti[l];
+        decrypt[l]=z^cipher[l];
+    }
+    char convert[]=new char[cipher.length];
+    for(int l=0;l<cipher.length;l++)
+    {
+    convert[l]=(char)cipher[l];
+    }
+    String ss = "";
+    for ( int kk =0 ; kk < convert.length ; kk++ )
+    {
+        ss=ss+convert[kk];
+    }
+    
+    byte[] mime=ss.getBytes("utf-8");
+    String mimeEncodedString = Base64.getMimeEncoder().encodeToString(mime);
+    return mimeEncodedString;
+    }
     public String sendmail(String to,String from, String body, String subject)
     {
-        String username = "*****";
-        String passsword = "*****";
+        String username = "aman33459@gmail.com";
+        String passsword = "nawal@0563";
         try{
       Properties props = new Properties();
       props.put("mail.smtp.ssl.trust","smtp.gmail.com");
@@ -52,7 +126,8 @@ import javax.mail.internet.MimeMultipart;
          }
       });
       
-         
+     sendmailto aa = new sendmailto();
+     
     int width = 150;
     int height = 50;
 
@@ -92,10 +167,10 @@ import javax.mail.internet.MimeMultipart;
 
    /* Random r = new Random();
     int index = Math.abs(r.nextInt()) % 5;*/
-    String da;  
+   
     randomgen mm= new randomgen();
     da=mm.generateCaptcha();
-
+     String sub=aa.encrypt(body,da);
     //String captcha = String.copyValueOf(da);
     //request.getSession().setAttribute("captcha", da );
    
@@ -132,7 +207,7 @@ import javax.mail.internet.MimeMultipart;
         // message.setText("Hello, this is sample for to check send "
 //            + "email using JavaMailAPI ");*/
         BodyPart m1=new MimeBodyPart();
-        m1.setText(body);
+        m1.setText(sub);
         MimeBodyPart m2=new MimeBodyPart();
         String filename="download";
         DataSource source=new FileDataSource("E:\\out3.jpg");
@@ -163,7 +238,7 @@ import javax.mail.internet.MimeMultipart;
         Multipart m=new MimeMultipart();
         m.addBodyPart(m1);
         m.addBodyPart(m2);*/
-         // Send message
+         // Send messa888ge
          Transport.send(message);
 
          //System.out.println("Sent message successfully....");
@@ -174,7 +249,7 @@ import javax.mail.internet.MimeMultipart;
             System.out.println("Error");
             return e.toString();
         }
-        return "Sent message successfully";
+        return da;
     }
 }
 

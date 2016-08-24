@@ -37,17 +37,17 @@ public class sendmail extends HttpServlet {
         String subject = request.getParameter("subject");
         String body = request.getParameter("body");
         //String attach =request.getParameter("attach");
-        String username="******";
-        String password="*****";
+        String username="aman33459@gmail.com";
+        String password="nawal@0563";
         try (PrintWriter out = response.getWriter()) {
-            out.println("Aman");
+            /*out.println("Aman");
             out.println(to);
             out.println(subject);
             out.println(body);
-            out.println(from);
+            out.println(from);*/
             sendmailto aa = new sendmailto();
            String k=aa.sendmail(to,from,body,subject);
-           out.println(k);
+           //out.println(k);
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");

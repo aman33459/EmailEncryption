@@ -53,7 +53,7 @@ public class SimpleCaptchaServlet extends HttpServlet {
     String val=request.getParameter("value");
     int k=Integer.parseInt(val);
     inbox aa=new inbox();
-   String filepa=aa.recieveEmail("*******","********",k);
+   String filepa=aa.recieveEmail("aman33459@gmail.com","nawal@0563",k);
    /*PrintWriter out = response.getWriter();
    out.println(filepa);*/
     BufferedImage img = null;
